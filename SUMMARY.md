@@ -11,3 +11,7 @@
 
 * [239. Sliding Window Maximum](priority-queue/239.-sliding-window-maximum.md)
 
+## 奇怪的应用题
+
+* [1041. Robot Bounded In Circle](qi-guai-de-ying-yong-ti/1041.-robot-bounded-in-circle.md)
+
