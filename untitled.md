@@ -1,84 +1,5 @@
 # 刷题笔记
 
-**239. Sliding Window Maximum**  
-[**https://leetcode.com/problems/sliding-window-maximum/**](https://leetcode.com/problems/sliding-window-maximum/)
-
-**You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.**
-
-**Return the max sliding window.**
-
-**Example 1:**
-
-Input: nums = \[1,3,-1,-3,5,3,6,7\], k = 3
-
-Output: \[3,3,5,5,6,7\]
-
-Explanation: 
-
-Window position                Max
-
----------------               -----
-
-\[1  3  -1\] -3  5  3  6  7       3
-
- 1 \[3  -1  -3\] 5  3  6  7       3
-
- 1  3 \[-1  -3  5\] 3  6  7      5
-
- 1  3  -1 \[-3  5  3\] 6  7       5
-
- 1  3  -1  -3 \[5  3  6\] 7       6
-
- 1  3  -1  -3  5 \[3  6  7\]      7
-
-**解法1： 用priority queue去maintain一个从小到大排序的window，每次右移一格，把window左边出界的那个元素删掉，再加入新的元素，c++可以借助multiset来实现。  
-解法2： Monotonic Queue，维护一个至多有window size个元素的dequeue，每次push进来新元素时，删除所有比他小的元素（因为它们都在新元素左边，对于找max已经没有任何贡献了），然后加新元素。max将会永远在dequeue.front\(\),  window往右移时，如果左边出界的元素等于dequeue.front\(\)才需要删除，不然它肯定已经在push的时候就被清理掉了。  
-class Monoqueue**
-
-**{**
-
-    **deque&lt;int&gt; m\_deque;**  
-
-**public:**
-
-        **void push\(int val\)**
-
-        **{**
-
-            **while\(!m\_deque.empty\(\) && m\_deque.back\(\) &lt; val\)**
-
-            **{**
-
-                **m\_deque.pop\_back\(\);**
-
-            **}**
-
-            **m\_deque.emplace\_back\(val\);**
-
-        **};**
-
-        **int max\(\)**
-
-        **{**
-
-            **return m\_deque.front\(\);**
-
-        **}**
-
-        **void pop \(\)**
-
-        **{**
-
- **// when use pop\(\), need to check whether nums\[begin of window -1\] == m\_deque.max\(\), only pop\(\) when this condition matches**
-
-            **m\_deque.pop\_front\(\);**
-
-        **}**
-
-**};**  
-  
-
-
 **236. Lowest Common Ancestor of a Binary Tree**
 
 [**https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/discuss/158060/Python-DFS-tm**](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/discuss/158060/Python-DFS-tm)
@@ -209,17 +130,5 @@ DP\[i\]\[j\] = min\(DP\[i-1\]\[j-1\], DP\[i-1\]\[j\], DP\[i\]\[j-1\]\) + 1
 
 **有一些边界注意点：最好nums1.size &lt;= nums2.size，可以把数组对换  
 考虑到m1-1, m2-1, m1, m2可能会出边界的情况，筛选valid index去比较**  
-
-
-**200. Number of Islands**
-
-[**https://leetcode.com/problems/number-of-islands/**](https://leetcode.com/problems/number-of-islands/)
-
-**695. Max Area of Island**
-
-[**https://leetcode.com/problems/max-area-of-island/**](https://leetcode.com/problems/max-area-of-island/)
-
-**两种解法 DFS or BFS  
-DFS:**  
 
 
